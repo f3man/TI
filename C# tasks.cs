@@ -2,10 +2,10 @@
 // #1
 public class Program
 {
-	public static void Main()
+  public static void Main()
   {
     int b = 3;
-   	ChangeValue(b, 5);
+    ChangeValue(b, 5);
     Console.WriteLine(b);
   }
   
@@ -15,7 +15,7 @@ public class Program
   }
 }
 
-// #1
+// #2
 
 public static class Program
 {
