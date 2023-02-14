@@ -14,6 +14,21 @@ public class Program
   }
 }
 
+// #2
+public class User
+{
+   public string Name { get; set; }
+}
+
+[ApiController]
+public class OrderApiController
+{
+   public Task<IActionResult> Submit(User user)
+   {
+   	// ...
+   }
+}
+
 // #2 List
 using System;
 using System.Collections.Generic;
