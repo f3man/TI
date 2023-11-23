@@ -1,7 +1,7 @@
 public class User
 {
    public string Name { get; set; }
-   public string LastName { get; set; } = null!;
+   public string LastName { get; set; };
 }
 
 [Route("users")]
@@ -14,7 +14,7 @@ public class UserApiController : ControllerBase
         
     }
     [HttpPost]
-    public Task<IActionResult> SearchCustomer([FromBody] Payload payload)
+    public Task<IActionResult> SearchCustomer([FromBody] User user)
     {
         // 
         // 
