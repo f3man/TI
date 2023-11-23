@@ -6,12 +6,10 @@ public class Program
     int b = 3;   
     ChangeValue(b, 5);
     Console.WriteLine(b);
-    // 3
 
     var entity = new Entity { Number = 3 };
     ChangeNumberInEntity(entity, 5);
     Console.WriteLine(entity.Number);
-    // 5
   }
   
   public static void ChangeValue(int b, int c)
