@@ -1,21 +1,18 @@
-public class User
+public class Customer
 {
    public string Name { get; set; }
    public string LastName { get; set; };
 }
 
-[Route("users")]
+[Route("customers")]
 [ApiController]
-public class UserApiController : ControllerBase
+public class CustomerApiController : ControllerBase
 {
-
-    public UserApiController(IRequestHandler requestHandler)
-    {
-        
-    }
     [HttpPost]
-    public Task<IActionResult> SearchCustomer([FromBody] User user)
+    [Route("search")]
+    public Task<IActionResult> SearchCustomer([FromBody] Customer customer)
     {
+        return Ok(customer.Name);
         // 
         // 
         // ...
@@ -24,7 +21,7 @@ public class UserApiController : ControllerBase
 
 // .NET 5 -> .NET 6
 
-// POST /users
+// POST /customers/search
 /*
 
 {
