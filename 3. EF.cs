@@ -11,5 +11,9 @@ public class AddressRepository
         var addresses2 = await Addresses.AsEnumerable()
             .Where(x => x.Country == "Moldova");
 
+
+        var addresses3 = await Addresses.AsEnumerable()
+            .Where(x => x.Country == "Serbia");
+
     }
 }
