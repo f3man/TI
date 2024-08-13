@@ -5,6 +5,13 @@ public class Program
         var number = GetNumber().Result;
     }
 
+
+    public async Task<int> GetNumber()
+    {
+        // some code here
+        throw new NotImplementedException();
+    }
+
     public async Task GetAsync()
     {
         var number1 = await GetNumber1();
