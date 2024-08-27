@@ -1,31 +1,49 @@
-public class Customer
-{
-   public string Name { get; set; }
-   public string LastName { get; set; };
-}
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
-[Route("customers")]
-[ApiController]
-public class CustomerApiController : ControllerBase
+namespace MyApp.Controllers
 {
-    [HttpPost]
-    [Route("search")]
-    public Task<IActionResult> SearchCustomer([FromBody] Customer customer)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductsController : ControllerBase
     {
-        return Ok(customer.Name);
-        // 
-        // 
-        // ...
+        private static List<Product> products = new List<Product>
+        {
+            new Product { Id = 1, Name = "Laptop", Price = 1000 },
+            new Product { Id = 2, Name = "Smartphone", Price = 800 }
+        };
+
+        [HttpGet]
+        public IActionResult GetAllProducts()
+        {
+            return Ok(products);
+        }
+
+        [HttpPost]
+        public IActionResult AddProduct(Product product)
+        {
+            products.Add(product);
+            return Ok(product);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteProduct(int id)
+        {
+            var product = products.FirstOrDefault(p => p.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            products.Remove(product);
+            return Ok();
+        }
+    }
+
+    public class Product
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
     }
 }
-
-// .NET 5 -> .NET 6
-
-// POST /customers/search
-/*
-
-{
-    "Name": "John",
-    "LastName": null
-}  
-*/
